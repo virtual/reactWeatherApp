@@ -9,6 +9,7 @@ var FontAwesome = require('react-fontawesome');
 //  http://fontawesome.io/icon/sun-o/
 // Display them next to weather description, and put them inside a react-strap card.
 // In the title of the card, display the city. 
+// We're going to have this rendered beneath the table.
 
 // tips:
 //  First, lets get the react-strap card working. Go to https://reactstrap.github.io/components/card/,
@@ -32,7 +33,7 @@ var FontAwesome = require('react-fontawesome');
 //    </Card>   
 // So now get it working to render the proper font-awesome icon! There's many
 // ways to do this. 
-
+// Here's a screenshot of what mine looks like. (It's stand alone, no table in it yet)
 class IconWidget extends Component {
   render() {
     return (
