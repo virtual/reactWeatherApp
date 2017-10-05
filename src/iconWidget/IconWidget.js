@@ -7,6 +7,8 @@ var FontAwesome = require('react-fontawesome');
 //  http://fontawesome.io/icon/umbrella/
 //  http://fontawesome.io/icon/cloud/
 //  http://fontawesome.io/icon/sun-o/
+// Try to support some of these descriptions: https://openweathermap.org/weather-conditions
+// Don't feel like you have to support them all, just a few, some that reflect the icons.
 // Display them next to weather description, and put them inside a react-strap card.
 // In the title of the card, display the city. 
 // We're going to have this rendered beneath the table.
