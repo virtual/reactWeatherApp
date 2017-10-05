@@ -18,7 +18,7 @@ var FontAwesome = require('react-fontawesome');
 //the user clicks the button, you'll generate a new url using their input.
 //call the api and render the table and iconWidget. Hopefully, you won't have to
 //update anything on either component. 
-
+ 
 //render the search bar above the table and icon widget
 
 //tips: you'll need to use react-strap, so import the react-strap components you want to grab
