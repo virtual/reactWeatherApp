@@ -3,6 +3,7 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } f
 import {
   Link
 } from 'react-router-dom';
+import IconWidget from '../iconWidget/IconWidget';
 
 export default class NavBar extends Component {
   constructor (props) {
@@ -22,7 +23,7 @@ export default class NavBar extends Component {
     return (
       <div>
         <Navbar color='light' light expand='md'>
-          <NavbarBrand href='/'>Weather App</NavbarBrand>
+          <NavbarBrand href='/'>xx Weather App</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className='ml-auto' navbar>

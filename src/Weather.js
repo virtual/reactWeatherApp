@@ -1,39 +1,81 @@
 import React, { Component } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Table } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button } from 'reactstrap';
+import SearchBar from './searchBar/SearchBar';
+import './iconWidget/IconWidget.css';
+import NavBar from './navBar/NavBar.js';
+import IconWidget from './iconWidget/IconWidget';
+import Sunrise from './sunrise/Sunrise';
+var FontAwesome = require('react-fontawesome');
 
-
-
-//  api key 4 l8tr = 3d6b633422451393e953dab4052ea0e4
-//  url 4 l8tr  - http://api.openweathermap.org/data/2.5/weather?q=Bozeman&appid= 
-class WeatherComponent extends React.Component {
-  constructor() {
+export default class WeatherComponent extends React.Component {
+  constructor () {
     super();
     this.state = {
       initialized: false
     };
+    this.updateClick = this.updateClick.bind(this);
   }
 
-  componentDidMount() {
-    var url = 'http://api.openweathermap.org/data/2.5/weather?q=Bozeman&appid=3d6b633422451393e953dab4052ea0e4';
+  updateClick (city) {
+    console.log(city);
+    this.setState({
+      initialized: false
+    });
+    console.log('uc!', this);
+    // wrap your
+    // logic fetching all the weather api data into a method.
+    var jeanineapi = 'e6ea27b1c535e375f2f3ab9cfeab7df6';
+    var markapi = '3d6b633422451393e953dab4052ea0e4';
+    var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=' + markapi;
     fetch(url).then(function (response) {
       return response.json();
     }).then((weatherObj) => {
-      console.log(weatherObj)
-      this.weatherData = weatherObj;
-      this.setState({
-        initialized: true
-      });
+      if (weatherObj !== undefined) {
+      // console.log(weatherObj)
+        this.weatherData = weatherObj;
+        this.setState({
+          initialized: true
+        });
+      } else {
+        this.updateClick();
+      }
     });
   }
+  componentDidMount () {
+    this.updateClick('Bozeman');
+  }
 
-  render() {
+  render () {
+    let currentLocation = this.props.location.pathname;
+    console.log(currentLocation);
+
     if (this.state.initialized) {
-      return (
-        <div>
-          <h1>{this.weatherData.name}</h1>
-          <WeatherTable weatherData={this.weatherData} />
-        </div>
-      );
+      if (currentLocation === '/current-weather') {
+        return (
+          <div>
+            <h1>Weather</h1>
+            <IconWidget weatherData={this.weatherData} />
+            <SearchBar city={this.weatherData.name} updateClick={this.updateClick} />
+
+          </div>
+        );
+      } else if (currentLocation === '/sunrise-report') {
+        return (
+          <div>
+            <h1>Sunrise!</h1>
+            <Sunrise weatherData={this.weatherData} />
+            <SearchBar city={this.weatherData.name} updateClick={this.updateClick} />
+
+
+
+          </div>
+        );
+      } else {
+        return (
+          <div>Invalid request</div>
+        );
+      }
     } else {
       return (
         <h2>
@@ -43,83 +85,3 @@ class WeatherComponent extends React.Component {
     }
   }
 }
-
-
-class WeatherTable extends Component {
-  constructor() {
-    super();
-  }
-  render() {
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>Temperature</th>
-            <th>Pressure</th>
-            <th>Humidity</th>
-          </tr>
-        </thead>
-        <WeatherTBody weatherData={this.props.weatherData} />
-
-      </table>
-    );
-  }
-}
-class WeatherTBody extends Component {
-  render() {
-    return (
-
-      <tbody>
-        <tr>
-          <td>
-            <ConvertToF tempK={this.props.weatherData.main.temp} />
-          </td>
-          <td>
-            {this.props.weatherData.main.pressure}
-          </td>
-          <td>
-            {this.props.weatherData.main.humidity}
-          </td>
-        </tr>
-      </tbody>
-    );
-  }
-}
-class ConvertToF extends Component {
-  constructor() {
-    super();
-  }
-  render() {
-    //T(°F) = T(K) × 9/5 - 459.67
-    var tempK = this.props.tempK;
-    var farTemp = Math.round(tempK * 9 / 5 - 459.67);
-    return (
-      <div>{farTemp}&deg;F</div>
-    );
-  }
-}
-
-// Exercise 1:
-//  In the table, we display the temperature in kelvin. Since we aren't
-//  studying physics, that's not very useful. Build and use a react component
-//  that converts the temperature to farenheit. 
-
-// tip: So above, the jsx on line 61 will look something this:
-//   ...<td>
-//         <Farenheit temperature={this.props.weatherData.main.temp}>
-
-// Exercise 2:
-//  We need to "lift the state" so that multiple components can access the 
-//  weather data that is being fetched from the api. So the first step is
-//  to encapsulate all the table logic and templating and put it into it's own 
-//  component. The app should still function and look the same, but we're passing 
-//  the weather data into a child component instead of having everything inside
-//  one component
-
-// If you need help, here's some tips:
-// step 1: make a new component, name it something appropriate, like "WeatherTable"
-// step 2: inject the return value of the api into the new component, just like you
-//         did with the kelvin converter. 
-// step 3: render all the table templating inside of it. Feel free to copy and paste
-//         to your hearts content!
-export default WeatherComponent;

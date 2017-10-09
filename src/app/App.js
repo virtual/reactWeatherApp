@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../navBar/NavBar.js';
-import WeatherComponent from '../iconWidget/IconWidget';
+import WeatherComponent from '../Weather';
 import Homepage from '../homepage/Homepage';
 import {
   BrowserRouter as Router,
@@ -14,9 +14,9 @@ export default class App extends React.Component {
           <div>
             <NavBar />
             
-            <Route path='/home' component={Home2} />
+            <Route path='/home' component={Home} />
             <Route path='/current-weather' component={WeatherComponent} />
-            <Route path='/sunrise-report' component={SunriseReport} />
+            <Route path='/sunrise-report' component={WeatherComponent} />
           </div>
         </Router>
       </div>
@@ -24,7 +24,7 @@ export default class App extends React.Component {
   }
 }
 
-class Home2 extends Component {
+class Home extends Component {
   render () {
     return (
       <div>
@@ -33,12 +33,4 @@ class Home2 extends Component {
     );
   }
 }
-class SunriseReport extends React.Component {
-  render () {
-    return (
-      <div>
-        I'm Jesse Lacey and I'm with the Band Brand New
-      </div>
-    );
-  }
-}
+
