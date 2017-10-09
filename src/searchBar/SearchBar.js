@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Button, InputGroup, InputGroupAddon, Input } from 'reactstrap';
-import WeatherComponent from '../iconWidget/IconWidget.js';
-var FontAwesome = require('react-fontawesome');
+import { Button, InputGroup, Input } from 'reactstrap';
 
 // So hopefully we have a bunch of components and our 'state' is being managed in only
 // one of them (the 'top' most, the one making the api call). Now lets build a 
@@ -36,7 +34,7 @@ class SearchBar extends Component {
    // console.log('helloooooo')
    // console.log(this.state.value)
    if (this.state.value !== '') {
-    this.props.updateClick(this.state.value);
+    this.props.fetchWeatherData(this.state.value);
    }
   }
 

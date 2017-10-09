@@ -28,3 +28,7 @@ body, html {
     background: -o-linear-gradient(left, #2F2727, #1a82f7);
    
 }
+
+.card .weather-icon {
+  font-size: 4rem;
+}

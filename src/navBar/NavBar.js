@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import {
   Link
 } from 'react-router-dom';
-import IconWidget from '../iconWidget/IconWidget';
+import WeatherIcon from '../iconWidget/weatherIcon';
 
 export default class NavBar extends Component {
   constructor (props) {
@@ -20,15 +20,16 @@ export default class NavBar extends Component {
     });
   }
   render () {
+    console.log(this.props);
     return (
       <div>
         <Navbar color='light' light expand='md'>
-          <NavbarBrand href='/'>xx Weather App</NavbarBrand>
+          <NavbarBrand href='/'><WeatherIcon desc={this.props.weatherData.weather[0].description} /> Weather App</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className='ml-auto' navbar>
               <NavItem>
-                <Link className='nav-link' to='/home'>Home</Link>
+                <Link className='nav-link' to='/'>Home</Link>
               </NavItem>
               <NavItem>
                 <Link className='nav-link' to='/current-weather'>Current Weather</Link>
