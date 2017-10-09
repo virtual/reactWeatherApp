@@ -7,7 +7,7 @@
         }
       },	
     "rules":{
-        "indent":["error", 2], 
+        //"indent":["error", 2], 
         "semi":[1, "always"]
     },
     "extends": ["standard", "standard-react"]

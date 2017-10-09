@@ -140,18 +140,18 @@ class WeatherIcon extends Component {
     );
   }
 }
-class ConvertToF extends Component {
-  constructor () {
-    super();
-  }
-  render () {
-    // T(°F) = T(K) × 9/5 - 459.67
-    var tempK = this.props.tempK;
-    var farTemp = Math.round(tempK * 9 / 5 - 459.67);
-    return (
-      <div>{farTemp}&deg;F</div>
-    );
-  }
-}
+// class ConvertToF extends Component {
+//   constructor () {
+//     super();
+//   }
+//   render () {
+//     // T(°F) = T(K) × 9/5 - 459.67
+//     var tempK = this.props.tempK;
+//     var farTemp = Math.round(tempK * 9 / 5 - 459.67);
+//     return (
+//       <div>{farTemp}&deg;F</div>
+//     );
+//   }
+// }
 
 export default WeatherComponent;
