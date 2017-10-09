@@ -3,6 +3,7 @@ import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 import SearchBar from '../searchBar/SearchBar';
 import "./IconWidget.css";
+import NavBar from '../navBar/NavBar.js';
 var FontAwesome = require('react-fontawesome');
 
 // This exercise is getting building a component different from the weather table

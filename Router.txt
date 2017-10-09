@@ -1,6 +1,6 @@
 Now lets apply some routing to the weather app. 
 Step 1: Build a nav bar for this app using react strap. Feel free to style it to look rad. 
-Step 2: Make routes abnd links for a home page, current weather, and sunrise report (we'll make it today)
+Step 2: Make routes and links for a home page, current weather, and sunrise report (we'll make it today)
 Step 3: Configure the app to render different components from each route. The 'current weather' will be the 
         table, icon widget, and search bar. We'll have to build the 'home page' and 'sunrise report'. 
 Step 4: The home page will be a react-strap carousel that renders some weather images and info about the app. 
